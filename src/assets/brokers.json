@@ -1,0 +1,65 @@
+[
+  {
+    "id": "ppi",
+    "nombre": "PPI",
+    "comision_base": 0.60,
+    "comision_asesor": 1.50,
+    "derechos_mercado_incluidos": false,
+    "iva_incluido": false,
+    "notas": "Comisión base asume operatoria por internet."
+  },
+  {
+    "id": "adcap",
+    "nombre": "Adcap",
+    "comision_base": 3.00,
+    "derechos_mercado_incluidos": false,
+    "iva_incluido": false,
+    "notas": "Arancel máximo reportado."
+  },
+  {
+    "id": "fiwind",
+    "nombre": "Fiwind",
+    "comision_base": 0.50,
+    "comision_dma": 0.75,
+    "derechos_mercado_incluidos": false,
+    "iva_incluido": false,
+    "notas": "La comisión base asume operación vía Plataforma."
+  },
+  {
+    "id": "balanz",
+    "nombre": "Balanz",
+    "comision_base": 0.50,
+    "comision_asesor": 1.50,
+    "derechos_mercado_incluidos": false,
+    "iva_incluido": false,
+    "notas": "Comisión base asume operatoria Trading Online."
+  },
+  {
+    "id": "iol",
+    "nombre": "InvertirOnline",
+    "comision_base": 0.50,
+    "derecho_mercado_fijo": 0.05,
+    "derechos_mercado_incluidos": false,
+    "iva_incluido": false,
+    "notas": "Tarifa plana sin importar la categoría de la cuenta."
+  },
+  {
+    "id": "cocos",
+    "nombre": "Cocos Capital",
+    "comision_base": 0.45,
+    "comision_premium": 0.00,
+    "derechos_mercado_incluidos": false,
+    "iva_incluido": true,
+    "notas": "Comisión 0% aplica a planes Cocos Gold y Cocos Pro."
+  },
+  {
+    "id": "bullmarket",
+    "nombre": "Bull Market Brokers",
+    "comision_base": 0.50,
+    "comision_premium": 0.25,
+    "derecho_mercado_fijo": 0.07,
+    "derechos_mercado_incluidos": false,
+    "iva_incluido": false,
+    "notas": "Comisión premium aplica a plan Active Trader."
+  }
+]
