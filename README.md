@@ -1,59 +1,47 @@
-# BrokerComparator
+# 📈 Comparador de Brokers Argentinos
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.2.
+Una calculadora financiera interactiva construida con **Angular** y **TailwindCSS**. Esta herramienta permite a los inversores comparar en tiempo real los costos totales (comisiones, derechos de mercado e IVA) de operar Acciones y CEDEARs en los principales brokers de Argentina.
 
-## Development server
+## 🚀 Características
 
-To start a local development server, run:
+* **Cálculo en Tiempo Real:** Ingresá la cantidad nominal y el precio unitario, y la plataforma calcula automáticamente el costo total estimado.
+* **Ordenamiento Dinámico:** Los resultados se ordenan automáticamente de menor a mayor costo, destacando visualmente la opción más económica.
+* **Costos Transparentes:** Desglosa el monto de inversión puro de los gastos asociados (comisiones base, derechos de mercado fijos/variables e IVA).
+* **Arquitectura Escalable:** Los datos de los brokers se consumen desde un archivo JSON tipado, lo que permite agregar nuevos agentes, actualizar tarifas o migrar a una base de datos externa de forma sencilla y sin alterar la lógica de los componentes.
+* **Diseño Responsive:** Interfaz moderna y fluida adaptada para dispositivos móviles y de escritorio.
 
-```bash
-ng serve
-```
+## 🛠️ Tecnologías Utilizadas
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+* [Angular](https://angular.dev/) (Standalone Components, Control Flow)
+* [TailwindCSS v4](https://tailwindcss.com/)
+* TypeScript
+* HTML5 / SCSS
 
-## Code scaffolding
+## 📦 Instalación y Uso Local
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Para correr este proyecto en tu entorno local, asegurate de tener [Node.js](https://nodejs.org/) y Angular CLI instalados.
 
-```bash
-ng generate component component-name
-```
+1. Cloná el repositorio:
+   git clone https://github.com/TU_USUARIO/broker-comparator.git
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+2. Navegá al directorio del proyecto:
+   cd broker-comparator
 
-```bash
-ng generate --help
-```
+3. Instalá las dependencias:
+   npm install
 
-## Building
+4. Levantá el servidor de desarrollo:
+   ng serve
 
-To build the project run:
+5. Abrí en el navegador
 
-```bash
-ng build
-```
+## 🗺️ Roadmap (Próximos Pasos)
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+* [ ] Agregar logotipos e isologotipos de cada broker en las tarjetas.
+* [ ] Incorporar más agentes de liquidación (ALYCs) al archivo de datos.
+* [ ] Sumar un selector (toggle) para calcular costos de instrumentos exentos de IVA (ej. Bonos, Obligaciones Negociables).
+* [ ] Migrar el listado estático JSON a una base de datos en la nube.
 
-## Running unit tests
+## 🤝 Contribuciones
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Las contribuciones, reportes de bugs y sugerencias de nuevas características (pull requests) son siempre bienvenidas. Si las tarifas de algún broker se actualizan, sentite libre de proponer el cambio en el archivo `brokers.json` o abrir un issue.
