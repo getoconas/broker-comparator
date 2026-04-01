@@ -49,8 +49,8 @@
     "comision_base": 0.45,
     "comision_premium": 0.00,
     "derechos_mercado_incluidos": false,
-    "iva_incluido": true,
-    "notas": "Comisión 0% aplica a planes Cocos Gold y Cocos Pro."
+    "iva_incluido": false, 
+    "notas": "Plan gratuito (Personas Humanas). Planes Gold/Pro tienen 0%."
   },
   {
     "id": "bullmarket",
@@ -61,5 +61,13 @@
     "derechos_mercado_incluidos": false,
     "iva_incluido": false,
     "notas": "Comisión premium aplica a plan Active Trader."
+  },
+  {
+    "id": "brubank-balanz",
+    "nombre": "Brubank (vía Balanz)",
+    "comision_base": 0.60,
+    "derechos_mercado_incluidos": false,
+    "iva_incluido": false,
+    "notas": "Operando a través de la app de Brubank."
   }
 ]
