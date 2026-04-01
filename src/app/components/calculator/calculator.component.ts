@@ -6,6 +6,10 @@ import { FormsModule } from '@angular/forms';
 
 // Extendemos el modelo para guardar los resultados calculados
 export interface ResultadoBroker extends Broker {
+  montoInvertir: number;
+  montoComision: number;
+  montoDerechos: number;
+  montoIva: number;
   totalCargos: number;
   montoFinal: number;
 }
@@ -23,12 +27,13 @@ export class CalculatorComponent implements OnInit {
 
   brokersBase: Broker[] = [];
   resultadosOrdenados: ResultadoBroker[] = [];
+
   cantidad: number = 1;
   precio: number = 10000;
 
   // Constantes impositivas y de mercado estándar de Argentina
   readonly IVA = 0.21;
-  readonly DERECHO_MERCADO_DEFAULT = 0.08; // Porcentaje estándar si el broker no lo especifica
+  readonly DERECHO_MERCADO_DEFAULT = 0.05; // BYMA
 
   ngOnInit(): void {
     // Cargamos los brokers al iniciar el componente
@@ -38,7 +43,6 @@ export class CalculatorComponent implements OnInit {
 
   // Esta función se ejecuta cada vez que el usuario teclea un número nuevo
   calcularResultados(): void {
-    // Calculamos el monto base multiplicando cantidad por precio unitario
     const montoInvertir = this.cantidad * this.precio;
 
     if (!montoInvertir || montoInvertir <= 0) {
@@ -47,30 +51,32 @@ export class CalculatorComponent implements OnInit {
     }
 
     const resultados = this.brokersBase.map(broker => {
-      // 1. Comisión base
-      const comisionBroker = montoInvertir * (broker.comision_base / 100);
+      // 1. Comisión base pura (forzamos el redondeo a 2 decimales como hace el broker)
+      const comisionCruda = montoInvertir * (broker.comision_base / 100);
+      const montoComision = Number(comisionCruda.toFixed(2));
       
-      // 2. Derechos de mercado
-      let derechosMercado = 0;
+      // 2. Derechos de mercado (BYMA)
+      let montoDerechos = 0;
       if (!broker.derechos_mercado_incluidos) {
         const porcentajeDerecho = broker.derecho_mercado_fijo !== undefined ? broker.derecho_mercado_fijo : this.DERECHO_MERCADO_DEFAULT;
-        derechosMercado = montoInvertir * (porcentajeDerecho / 100);
+        const derechosCrudos = montoInvertir * (porcentajeDerecho / 100);
+        montoDerechos = Number(derechosCrudos.toFixed(2));
       }
 
-      // 3. IVA
-      let iva = 0;
+      // 3. IVA (Se calcula sobre la suma de la comisión y los derechos, ya redondeados)
+      let montoIva = 0;
       if (!broker.iva_incluido) {
-        iva = (comisionBroker + derechosMercado) * this.IVA;
+        const ivaCrudo = (montoComision + montoDerechos) * this.IVA;
+        montoIva = Number(ivaCrudo.toFixed(2));
       }
 
-      // 4. Totales
-      const totalCargos = comisionBroker + derechosMercado + iva;
+      // 4. Totales exactos sumando los valores ya redondeados (así evitamos diferencias de centavos)
+      const totalCargos = montoComision + montoDerechos + montoIva;
       const montoFinal = montoInvertir + totalCargos;
 
-      return { ...broker, totalCargos, montoFinal };
+      return { ...broker, montoInvertir, montoComision, montoDerechos, montoIva, totalCargos: Number(totalCargos.toFixed(2)), montoFinal: Number(montoFinal.toFixed(2)) };
     });
 
-    // Ordenamos de menor a mayor
     this.resultadosOrdenados = resultados.sort((a, b) => a.totalCargos - b.totalCargos);
   }
 }
