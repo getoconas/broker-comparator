@@ -22,7 +22,7 @@ Una calculadora financiera interactiva construida con **Angular** y **TailwindCS
 Para correr este proyecto en tu entorno local, asegurate de tener [Node.js](https://nodejs.org/) y Angular CLI instalados.
 
 1. Cloná el repositorio:
-   git clone https://github.com/TU_USUARIO/broker-comparator.git
+   git clone https://github.com/getoconas/broker-comparator.git
 
 2. Navegá al directorio del proyecto:
    cd broker-comparator
