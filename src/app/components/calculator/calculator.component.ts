@@ -28,6 +28,7 @@ export class CalculatorComponent implements OnInit {
   brokersBase: Broker[] = [];
   resultadosOrdenados: ResultadoBroker[] = [];
 
+  tipoOperacion: 'compra' | 'venta' = 'compra';
   cantidad: number = 1;
   precio: number = 10000;
 
@@ -72,7 +73,13 @@ export class CalculatorComponent implements OnInit {
 
       // 4. Totales exactos sumando los valores ya redondeados (así evitamos diferencias de centavos)
       const totalCargos = montoComision + montoDerechos + montoIva;
-      const montoFinal = montoInvertir + totalCargos;
+      
+      let montoFinal = 0;
+      if (this.tipoOperacion === 'compra') {
+        montoFinal = montoInvertir + totalCargos; // Si compro, pago los gastos
+      } else {
+        montoFinal = montoInvertir - totalCargos; // Si vendo, me descuentan los gastos de mi ganancia
+      }
 
       return { ...broker, montoInvertir, montoComision, montoDerechos, montoIva, totalCargos: Number(totalCargos.toFixed(2)), montoFinal: Number(montoFinal.toFixed(2)) };
     });

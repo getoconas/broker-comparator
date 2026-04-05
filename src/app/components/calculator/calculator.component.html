@@ -21,6 +21,22 @@
         <input type="number" [(ngModel)]="precio" (ngModelChange)="calcularResultados()" class="w-full pl-10 pr-6 py-4 bg-white border-0 rounded-2xl text-2xl font-black text-gray-800 focus:ring-4 focus:ring-blue-300 outline-none transition-all" placeholder="Ej: 10000" min="1">
       </div>
 
+      <div class="relative w-full shadow-2xl rounded-2xl bg-white p-2 flex items-center">
+        <span class="absolute -top-3 left-4 bg-blue-700 text-blue-100 text-xs font-bold px-2 py-0.5 rounded-full z-10">
+          Operación
+        </span>
+        
+        <div class="flex w-full h-full gap-2">
+          <button (click)="tipoOperacion = 'compra'; calcularResultados()" [class]="tipoOperacion === 'compra' ? 'bg-emerald-500 text-white shadow-md ring-2 ring-emerald-300' : 'bg-transparent text-gray-500 hover:bg-gray-100'" class="flex-1 py-3 px-4 rounded-xl text-xl font-black transition-all outline-none">
+            Compra
+          </button>
+
+          <button (click)="tipoOperacion = 'venta'; calcularResultados()" [class]="tipoOperacion === 'venta' ? 'bg-red-500 text-white shadow-md ring-2 ring-red-300' : 'bg-transparent text-gray-500 hover:bg-gray-100'" class="flex-1 py-3 px-4 rounded-xl text-xl font-black transition-all outline-none">
+            Venta
+          </button>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -44,7 +60,7 @@
         <div class="space-y-3">
           <div class="space-y-2 border-b border-gray-100 pb-3">
             <div class="flex justify-between items-center text-sm text-gray-800 font-bold mb-3 pb-3 border-b border-gray-200">
-              <span>Valor neto (Inversión):</span>
+              <span>Valor neto:</span>
               <span>{{ resultado.montoInvertir | currency:'ARS':'symbol-narrow':'1.2-2' }}</span>
             </div>
 
