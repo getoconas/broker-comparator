@@ -57,7 +57,6 @@
     "nombre": "Bull Market Brokers",
     "comision_base": 0.50,
     "comision_premium": 0.25,
-    "derecho_mercado_fijo": 0.07,
     "derechos_mercado_incluidos": false,
     "iva_incluido": false,
     "notas": "Comisión premium aplica a plan Active Trader."
@@ -69,5 +68,13 @@
     "derechos_mercado_incluidos": false,
     "iva_incluido": false,
     "notas": "Operando a través de la app de Brubank."
+  },
+  {
+    "id": "uala",
+    "nombre": "Ualá",
+    "comision_base": 1.00,
+    "derechos_mercado_incluidos": false,
+    "iva_incluido": false,
+    "notas": "Arancel máximo reportado."
   }
 ]
